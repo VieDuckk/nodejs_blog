@@ -1,18 +1,15 @@
 
-const mongoose = require('mongoose');
-var slug = require('mongoose-slug-updater');
-mongoose.plugin(slug);
-const Schema = mongoose.Schema;
+class Course {
+    constructor(course) {
+        this.id = course.id;
+        this.name = course.name;
+        this.description = course.description;
+        this.image = course.image;
+        this.videoId = course.videoId;
+        this.level = course.level;
+        this.slug = course.slug;
+    }
+}
 
-const Course = new Schema(
-    {
-        name: { type: String, maxlength: 255, required: true },
-        description: { type: String, maxlength: 255 },
-        image: { type: String, maxlength: 255 },
-        videoId: { type: String },
-        level: { type: String },
-        slug: { type: String, slug: "name" },
-    },
-    { timestamps: true });
 
-module.exports = mongoose.model('Course', Course);
+module.exports = Course;
